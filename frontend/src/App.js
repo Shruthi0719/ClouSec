@@ -17,7 +17,7 @@ function App() {
       setSummary(data);
       setError(null);
     } catch (err) {
-      console.error(err);
+      console.error("FETCH ERROR:", err);
       setError("Failed to connect to backend");
     }
   };
