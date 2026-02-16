@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 from apscheduler.schedulers.background import BackgroundScheduler
 from clousec.scanners.ec2_scanner import scan_security_groups
 
@@ -6,6 +7,7 @@ from clousec.utils.db import findings_collection
 from clousec.scanners.s3_scanner import scan_s3_buckets
 
 app = Flask(__name__)
+CORS(app)
 
 def start_scheduler():
     scheduler = BackgroundScheduler()
