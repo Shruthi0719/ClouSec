@@ -46,6 +46,41 @@ def get_findings():
     findings = list(findings_collection.find({}, {"_id": 0}))
     return jsonify(findings)
 
+@app.route("/summary")
+def get_summary():
+    pipeline = [
+        {
+            "$group": {
+                "_id": {
+                    "service": "$service",
+                    "severity": "$severity"
+                },
+                "count": {"$sum": 1}
+            }
+        }
+    ]
+
+    results = list(findings_collection.aggregate(pipeline))
+
+    summary = {
+        "total_findings": findings_collection.count_documents({}),
+        "by_service": {},
+        "by_severity": {}
+    }
+
+    for r in results:
+        service = r["_id"]["service"]
+        severity = r["_id"]["severity"]
+        count = r["count"]
+
+        summary["by_service"].setdefault(service, 0)
+        summary["by_service"][service] += count
+
+        summary["by_severity"].setdefault(severity, 0)
+        summary["by_severity"][severity] += count
+
+    return jsonify(summary)
+
 if __name__ == "__main__":
     print("🚀 Starting ClouSec backend...")
     start_scheduler()
