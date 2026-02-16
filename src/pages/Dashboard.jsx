@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
 import StatsPanel from '../components/StatsPanel';
-import ChartPanel from '../components/Chartpanel';
+import ChartPanel from '../components/ChartPanel';
 import VulnerabilityCard from '../components/VulnerabilityCard';
 import '../styles/global.css';
 
 function Dashboard() {
   return (
     <div className="dashboard">
-      <Header title="Cloud Security Dashboard" />
+      <Header title="ClouSec" />
       <StatsPanel />
       <ChartPanel />
       <div className="grid">
