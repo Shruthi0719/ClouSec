@@ -1,69 +1,70 @@
-# ClouSec — AWS Misconfiguration Detector
+# Getting Started with Create React App
 
-ClouSec is a lightweight cloud security monitoring tool that scans AWS infrastructure in read-only mode and detects high-risk misconfigurations. This MVP focuses on three critical vulnerabilities:
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-- Public S3 bucket exposure  
-- Over-permissive IAM policies  
-- Open security group ports  
+## Available Scripts
 
-The system uses boto3 to collect resource metadata and surfaces findings through a backend API and a simple dashboard.
+In the project directory, you can run:
 
----
+### `npm start`
 
-## Architecture Overview
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### 1. Secure AWS Connection
-The scanner connects to AWS using boto3 with read-only IAM credentials, ensuring safe inspection without modifying resources.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### 2. Resource Enumeration
-The scanner collects configuration data from:
-- S3 buckets (public access settings and policies)  
-- IAM roles and attached policies  
-- Security group inbound rules  
+### `npm test`
 
-### 3. Detection Engine
-A rule-based engine evaluates the data and flags risks:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- S3 buckets with public access  
-- IAM entities with wildcard (`*`) permissions  
-- Security groups exposing sensitive ports to `0.0.0.0/0`  
+### `npm run build`
 
-Each issue is assigned an appropriate severity level.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### 4. Findings Aggregation
-All detected issues are normalized into a common structure containing:
-- Resource name  
-- Issue description  
-- Severity  
-- Timestamp  
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### 5. Backend API
-The backend exposes REST endpoints that serve the findings to the frontend in real time.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### 6. Monitoring Dashboard
-A lightweight React dashboard displays detected vulnerabilities with severity indicators, providing quick visibility into the cloud security posture.
+### `npm run eject`
 
----
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## Design Principles
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-- Read-only cloud access  
-- Lightweight and fast scanning  
-- Extensible rule-based detection  
-- Real-time visibility  
-- Focused AWS scope for rapid MVP delivery  
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
----
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Future Enhancements
+## Learn More
 
-- Multi-cloud support (Azure, GCP)  
-- Continuous scheduled scanning  
-- Advanced alert integrations  
-- Compliance mapping and risk scoring  
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
----
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-## Conclusion
+### Code Splitting
 
-ClouSec demonstrates how proactive monitoring of cloud configurations can help teams identify and remediate high-risk exposures before they are exploited.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
