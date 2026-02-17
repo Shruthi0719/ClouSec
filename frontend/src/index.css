@@ -1,13 +1,64 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply transition-colors duration-200;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, body, #root {
+  @apply h-full w-full;
 }
+
+
+body {
+  margin: 0;
+  background: #0b1220; /* deep professional navy */
+  color: #e5e7eb;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+.glassmorphism {
+  @apply bg-slate-dark/80 backdrop-blur-xl border border-purple-accent/20 rounded-xl;
+}
+
+.card {
+  @apply glassmorphism p-6 shadow-lg hover:shadow-glow transition-all duration-300;
+}
+
+.badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.badge-critical {
+  @apply bg-red-alert/20 text-red-alert;
+}
+
+.badge-high {
+  @apply bg-orange-warn/20 text-orange-warn;
+}
+
+.badge-medium {
+  @apply bg-yellow-warn/20 text-yellow-warn;
+}
+
+.badge-low {
+  @apply bg-blue-500/20 text-blue-400;
+}
+
+.btn-primary {
+  @apply px-6 py-2 bg-purple-accent hover:bg-purple-600 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-glow;
+}
+
+.btn-primary:disabled {
+  @apply opacity-50 cursor-not-allowed hover:bg-purple-accent;
+}
+
+.grid-responsive {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+.grid-responsive-2 {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-6;
+}
+
